@@ -9,7 +9,7 @@ public class QuickSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] array = {1,5,3,6,4,8,7,2};
+		int[] array = {1,5,3,6,4,8,7,2,10,9,3,6,8};
 		partition(array, 0, array.length - 1 );
 		for(int i:array)
 			System.out.print(i + " ");
@@ -33,18 +33,16 @@ public class QuickSort {
 		if(start == end)
 			return start;
 		swap(array, start, end);
-		int small = start;
 		for(int i = start; i < end; i++)
 		{
 			if(array[i] < array[end])
 			{
-				if(small != i)
-					swap(array, small, i);
-				small++;
+				swap(array, start, i);
+				start++;
 			}
 		}
-		swap(array, small, end);
-		return small;
+		swap(array, start, end);
+		return start;
 	}
 	public static void swap(int[] array, int aim, int from)
 	{

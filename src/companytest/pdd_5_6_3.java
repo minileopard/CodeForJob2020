@@ -14,47 +14,23 @@ public class pdd_5_6_3 {
             int A = sc.nextInt();
             int B = sc.nextInt();
             int N = sc.nextInt();
-            int left = 1, right = 1, sum = 0;
-            if(N==1)
-            {
-                sum = right;
-            }else
-            {
-                for(int i = 2; i <= N; i++)
-                {
-                    int temp = left;
-                    left = left + right;
-                    right = temp;
-                }
+            for (int i = 2; i <= N; i++) {
+                int temp = B;
+                B = A + B;
+                A = temp;
+                A = A % 3;
+                B = B % 3;
             }
-
-            left = left % 3;
-            right = right % 3;
-            A = A % 3;
-            B = B % 3;
-            sum = left * A + right * B;
-            if(sum % 3 == 0)
+            if(B % 3 == 0)
                 System.out.println("YES");
             else
                 System.out.println("NO");
-
-//
-//            long left = A, right = B;
-//            long sum = 0;
-//            if(N == 0)
-//                sum = left;
-//            else if(N == 1)
-//                sum = right;
-//            for(int i = 2; i <= N; i++)
-//            {
-//                sum = left + right;
-//                left = right;
-//                right = sum;
-//            }
-//            if(sum % 3 == 0)
-//                System.out.println("YES");
-//            else
-//                System.out.println("NO");
         }
     }
 }
+/*
+3
+1 1 3
+1 1 2
+15 17 3
+ */

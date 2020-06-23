@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Pro394 {
     public static void main(String[] args) {
-        System.out.println(new Pro394().decodeString("aaa"));
+        System.out.println(new Pro394().decodeString2("2[abc]3[cd]ef"));
     }
     public String decodeString(String s) {
         if(s == null || s.length() == 0)
@@ -55,6 +55,76 @@ public class Pro394 {
 
                 stack.add(tt.toString());
                 i++;
+            }
+        }
+        return stack.pop();
+    }
+    public String decodeString2(String s) {
+        Stack<String> stack = new Stack<>();
+        if(s == null)
+            return "";
+        int len = s.length();
+        if(len == 0)
+            return "";
+        StringBuilder sb = new StringBuilder();
+        int i = 0;
+        while(i < len)
+        {
+            char c = s.charAt(i);
+            if(c == '[')
+            {
+                stack.push("[");
+                i++;
+            }
+            else if( c == ']')
+            {
+                //弹栈计算
+                String temp = stack.pop();
+                stack.pop();//弹掉[
+                int count = Integer.parseInt(stack.pop());
+                while(count > 0)
+                {
+                    sb.append(temp);
+                    count--;
+                }
+                //将下面可能的字符串和为一体
+                if(!stack.isEmpty() && !stack.peek().equals("["))
+                {
+                    sb.insert(0, stack.pop());
+                }
+                stack.push(sb.toString());
+                sb.setLength(0);
+                i++;
+            }
+            else if(c <= '9' && c >= '0')
+            {
+                while(c <= '9' && c >= '0')
+                {
+                    sb.append(c);
+                    i++;
+                    if(i == len)
+                        break;
+                    c = s.charAt(i);
+                }
+                stack.push(sb.toString());
+                sb.setLength(0);
+            }
+            else if(c <= 'z' && c >= 'a' || c <= 'Z' && c >= 'A')
+            {
+                while(c <= 'z' && c >= 'a' || c <= 'Z' && c >= 'A')
+                {
+                    sb.append(c);
+                    i++;
+                    if(i == len)
+                        break;
+                    c = s.charAt(i);
+                }
+                if(!stack.isEmpty() && !stack.peek().equals("["))
+                {
+                    sb.insert(0, stack.pop());
+                }
+                stack.push(sb.toString());
+                sb.setLength(0);
             }
         }
         return stack.pop();
