@@ -21,11 +21,19 @@ class B extends A {
         System.out.print("2");
     }
 }
-public class test {
+interface Moveable{
+    void move();
+}
+public class test implements Moveable{
     public static void main(String[] args) {
         A ab = new B();
         ab.say();
         ab = new B();
         ab.say();
+    }
+
+    @Override
+    public void move() {
+        String s = "hi";
     }
 }

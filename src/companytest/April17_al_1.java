@@ -1,4 +1,4 @@
-package springRecruit;
+package companytest;
 
 import java.util.Scanner;
 
