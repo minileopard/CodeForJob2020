@@ -26,10 +26,16 @@ interface Moveable{
 }
 public class test implements Moveable{
     public static void main(String[] args) {
-        A ab = new B();
-        ab.say();
-        ab = new B();
-        ab.say();
+//        A ab = new B();
+//        ab.say();
+//        ab = new B();
+//        ab.say();
+        Integer i = 127;
+        Integer j = 127;
+        System.out.println(i == j);
+        i = +1;
+        j = +1;
+        System.out.println(i == j);
     }
 
     @Override

@@ -46,3 +46,15 @@ public class pdd_802_3 {
             System.out.println(-1);
     }
 }
+/*
+3 2 10
+4 2
+8 9
+4 3
+5 4
+4 3
+
+和这一题有点像
+计蒜客 awnKswater ( 完全背包问题 | 最小花费 | 记录最大重量 )
+https://blog.csdn.net/weixin_44510468/article/details/103251955
+ */
